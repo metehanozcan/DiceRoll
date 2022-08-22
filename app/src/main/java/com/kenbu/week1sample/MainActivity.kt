@@ -25,9 +25,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        button = findViewById(R.id.mybutton)
-        imageView_Dice = findViewById(R.id.imageView)
+        button = findViewById(R.id.mybutton) // Roll button
+        imageView_Dice = findViewById(R.id.imageView) //Dice imageView
 
+        
+        // button listener that calls rollDice method
         button.setOnClickListener { this
 
                 rollDice()
@@ -36,8 +38,11 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
+    //this method creates random integer in range 1->6
+    //it allows the image of the dice (imageView_dice) to change according to the number that comes out.
+    //it then applies the spin animation to our imageView.
     private fun rollDice() {
-        val animation : Animation = AnimationUtils.loadAnimation(this,R.anim.rotate)
+        val animation : Animation = AnimationUtils.loadAnimation(this,R.anim.rotate) //animation rules
 
         val drawableResource = when(Random.nextInt(6)+1){
             1->R.drawable.ic_dice_1
@@ -47,8 +52,8 @@ class MainActivity : AppCompatActivity() {
             5->R.drawable.ic_dice_5
             else ->R.drawable.ic_dice_6
         }
-        imageView_Dice.setImageResource(drawableResource)
-        imageView_Dice.startAnimation(animation)
+        imageView_Dice.setImageResource(drawableResource) //changes the view of Dice
+        imageView_Dice.startAnimation(animation) // animates the dice 
 
     }
 
